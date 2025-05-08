@@ -4,11 +4,11 @@ plugins {
 }
 
 project.group = 'systems.comodal'
-project.version = "$VERSION"
+project.version = project.findProperty('VERSION') ?: '2.13.0'
 
 java {
   toolchain {
-    languageVersion =  JavaLanguageVersion.of(project.findProperty('javaVersion') as Integer ?: 24)
+    languageVersion =  JavaLanguageVersion.of(project.findProperty('javaVersion') as Integer ?: 17)
   }
 }
 
