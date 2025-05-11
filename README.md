@@ -22,3 +22,13 @@ If the presence and ordering of the JSON object fields are guaranteed to always 
 Otherwise, follow the [`IocLoopCompareStringFieldToCharsIf`](systems.comodal.json_iterator/src/jmh/java/systems/comodal/jsoniter/jmh/styles/IocLoopCompareStringFieldToCharsIf.java#L22) style, which enables inversion of control while it iterates over object fields in conjunction with comparing expected field strings against a field character array.  The advantage of this strategy is that it avoids constructing Strings for object fields.
 
 If the first character for all of an objects' fields are unique, follow either the [`IocLoopCharIf`](systems.comodal.json_iterator/src/jmh/java/systems/comodal/jsoniter/jmh/styles/IocLoopCharIf.java#L20) or [`IocLoopCharSwitch`](systems.comodal.json_iterator/src/jmh/java/systems/comodal/jsoniter/jmh/styles/IocLoopCharSwitch.java#L20) style.  Similar to the style `IocLoopCompareStringFieldToCharsIf`, these styles avoid constructing Strings for object fields.
+
+
+## Publish on local maven repository
+```shell
+./gradlew clean build publishToMavenLocal -PVERSION=2.13.0
+
+# If you encounter a similar error like `java.io.FileNotFoundException: /Users/oker/go/src/github.com/json-iterator/.gradle/8.13/fileHashes/fileHashes.lock (Operation not permitted)`, try to execute the following command and republish it again
+sudo chown -R $(whoami) .
+./gradlew --stop
+```
